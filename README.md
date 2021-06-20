@@ -11,12 +11,14 @@
 
 ## About the project
 
-This project is a clone project from original page "Astro".
+This project is a clone project from the original page "Astro".
 
-- [Original site][course-url]
+- [Original page][course-url]
+
+### 
 
 <p align="center">
-  <img src="CERTIFICATE.jpg">
+  <img src="CERTIFICATE.svg">
 </p>
 
 ## Contact
@@ -32,9 +34,9 @@ This project is a clone project from original page "Astro".
 ```
 git add -A
 git commit -m <tittle> <message>
-git push <remote> <branch>
-git subtree push --prefix <directory> <remote> gh-pages
-git push <remote> `git subtree split --prefix <directory> <branch>`:gh-pages --force
+git push origin main
+git subtree push --prefix src/ origin gh-pages
+git push origin `git subtree split --prefix src/ main`:gh-pages --force
 ```
 
 <!-- ALIAS README -->

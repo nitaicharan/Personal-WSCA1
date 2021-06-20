@@ -18,7 +18,9 @@ $principal-dark-color: #000014;
 
 html {
   font-size: 62.5%;
+}
 
+html {
   background-color: $principal-dark-color;
   background-image: radial-gradient(
     87.7% 87.7% at 85.6% 18.14%,
@@ -34,28 +36,101 @@ body {
   font-weight: 400;
   font-size: clamp(14px, calc(2rem + (6vw - 2.4rem)), 20px);
   box-sizing: border-box;
-  color: #f3f4f6;
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
+  z-index: -3;
+
+  &__starts {
+    min-width: 1200px;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: -3;
+  }
+
+  &__planet {
+    z-index: 3;
+    position: absolute;
+    right: -32px;
+    top: -128px;
+    transform: scale(1);
+
+    @media (max-width: 64em) {
+      & {
+        top: -128px;
+        left: -128px;
+        opacity: .5;
+        transform: scale(.5);
+      }
+    }
+  }
+
+  &__meteor--1 {
+    position: absolute;
+    left: 0;
+    top: calc(480px * -0.25);
+    left: calc(480px);
+    transform: scale(1) rotate(-34deg);
+    animation-name: meteor;
+    animation-duration: 10s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    animation-iteration-count: infinite;
+  }
+
+  &__meteor--2 {
+    position: absolute;
+    top: -5%;
+    right: 10%;
+    transform: scale(1) rotate(-34deg);
+    animation-name: meteor;
+    animation-duration: 9s;
+    animation-delay: 9s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    animation-iteration-count: infinite;
+  }
+
+  &__meteor--3 {
+    position: absolute;
+    bottom: 23%;
+    right: -256px;
+    transform: scale(1) rotate(-34deg);
+    animation-name: meteor;
+    animation-duration: 12s;
+    animation-duration: 6s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    animation-iteration-count: infinite;
+  }
 }
 
 .presentation {
   display: grid;
   grid-template-columns: auto 55vw auto;
   grid-template-columns: minmax(2.4rem, 1fr) minmax(auto, 60ch) minmax(
-    2.4rem,
-    1fr
+      2.4rem,
+      1fr
     );
   gap: 2rem;
   padding: clamp(2.4rem, 5vw, 6rem) 0;
   line-height: 1.5;
-  
+
   & > * {
     grid-column-start: 2;
   }
-  
+
   &--logo {
     margin: 4rem auto;
   }
-  
+
   &__text {
     & > * + * {
       margin-top: 2rem;
@@ -82,7 +157,6 @@ body {
     padding: 2em 0;
     opacity: 0.8;
   }
-
 }
 
 .btn {
@@ -133,5 +207,20 @@ body {
 .position {
   &-relative {
     position: relative;
+  }
+}
+
+@keyframes meteor {
+  0% {
+    transform: scale(calc(1 * 0.75)) rotate(-34deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  40%,
+  100% {
+    transform: scale(calc(1 * 1.1)) rotate(-34deg) translateX(calc(480px * -1));
+    opacity: 0;
   }
 }
